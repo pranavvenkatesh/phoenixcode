@@ -1,0 +1,29 @@
+ #include<Servo.h>
+Servo myservo;
+int pos = 0;
+void setup() {
+     myservo.attach(9);
+     pinMode(A1,INPUT);
+     Serial.begin(9600);
+     pinMode(5,OUTPUT);
+ }
+
+void loop()
+{
+  int a=analogRead(A1);
+  Serial.println(a);
+  if(a<300){
+    digitalWrite(5,HIGH);
+      for (pos = 0; pos <= 180; pos+=1) {
+          // in steps of 1 degree
+          delay(15);
+          }
+  }
+  else{
+    digitalWrite(5,LOW);
+    for (pos = 180; pos >0; pos-=1) {
+          // in steps of 1 degree
+          delay(15);
+          }
+  }
+}
